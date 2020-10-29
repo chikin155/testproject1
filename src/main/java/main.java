@@ -1,9 +1,28 @@
-import base.TestBase;
+import org.junit.Test;
+import org.testng.Assert;
+import pages.LandingPage;
 
 public class main {
-    public static void main(String[] args) {
-        TestBase base = new TestBase();
-        base.initalization();
+
+
+        String titleExpected="#1 Free CRM customer relationship management software cloud";
+        String actualTitle;
+
+        LandingPage landing = new LandingPage();
+
+
+    @Test
+    public void testTitle (){
+
+        actualTitle =  landing.getTitle1();
+        Assert.assertEquals(actualTitle,titleExpected,"Title unmatched");
+        landing.hoverMenu("Apps");
+        landing.verifyDropdownContainsOptionByName("Android");
+        landing.verifyDropdownContainsOptionByName("iPhone");
 
     }
+
+
+
+
 }

@@ -1,7 +1,11 @@
 package base;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -9,8 +13,22 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class TestBase {
-    public static Properties pro;
-    public static WebDriver driver;
+    private static Properties pro;
+    protected static  WebDriver driver;
+    public TestBase(){
+
+        readProperty();
+        System.setProperty("webdriver.chrome.driver","./driver.info/chromedriver");
+        driver= new ChromeDriver();
+        PageFactory.initElements(driver,this);
+        driver.get(pro.getProperty("url"));
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 
     // Read file property
@@ -36,24 +54,11 @@ public class TestBase {
 
     }
 
-    public void initalization ()  {
-        readProperty();
-        System.setProperty("webdriver.chrome.driver","./driver.info/chromedriver");
-        driver= new ChromeDriver();
-        driver.get(pro.getProperty("url"));
-        try{
-            Thread.sleep(2000);
-
-        }
-        catch (InterruptedException e){
-            e.printStackTrace();
-        }
-        driver.quit();
-
-
-
-
+    public void waitForElementDisplay(By xpath){
+        WebDriverWait wait = new WebDriverWait(driver,20);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(xpath));
 
     }
+
 
 }
