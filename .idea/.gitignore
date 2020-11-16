@@ -7,5 +7,24 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 
-/.idea/
-/target/
+##############################
+## IntelliJ
+##############################
+out/
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
+
+
+##############################
+## Java
+##############################
+.mtj.tmp/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
