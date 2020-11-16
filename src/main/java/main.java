@@ -22,6 +22,12 @@ public class main {
 
     }
 
+   @Test
+    public void test(){
+        Assert.assertEquals(1,1,"Test passed");
+
+   }
+
 
 
 
