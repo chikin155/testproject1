@@ -18,7 +18,7 @@ public class TestBase {
     public TestBase(){
 
         readProperty();
-        System.setProperty("webdriver.chrome.driver","./driver.info/chromedriver");
+        System.setProperty("webdriver.chrome.driver","./driver.info/chromedriver.exe");
         driver= new ChromeDriver();
         PageFactory.initElements(driver,this);
         driver.get(pro.getProperty("url"));
